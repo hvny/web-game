@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rrrun</title>
+    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <h1 class="header__title">Rrrun</h1>
+        </header>
+
+        <body>
+            <section class="game-zone">
+                <div class="game-zone__main">
+                    <button class="game-zone__button">GO!</button>
+                    <div class="game-zone__bottom-line"></div>
+                </div>
+                <p class="game-zone__points">0</p>
+                <ul class="game-zone__lifes">
+                    <li class="game-zone__life game-zone__life_empty"></li>
+                    <li class="game-zone__life game-zone__life_full"></li>
+                    <li class="game-zone__life game-zone__life_full"></li>
+                    <li class="game-zone__life game-zone__life_full"></li>
+                </ul>
+            </section>
+        </body>
+        <script src="./pages/index.js" type="module"></script>
+    </div>
+
+    <template id = "character">
+        <div class = "character">
+
+        </div>
+    </template>
+    <template id = "enemy">
+        <div class = "enemy">
+            
+        </div>
+    </template>
+</body>
+
+</html>
