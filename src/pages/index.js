@@ -1,8 +1,7 @@
-import Character from "../components/Character.js";
+import Player from "../components/Player.js";
 import Enemy from "../components/Enemy.js";
 
 import {
-    gameZone,
     startButton,
     points,
     characterImage,
@@ -11,8 +10,8 @@ import {
 
 let isGame = false;
 
-const characterDmitry = new Character(templateCharacterSelector, gameZone, characterImage); //создаём персонажа
-characterDmitry.generateCharacter();
+const characterDmitry = new Player(templateCharacterSelector, characterImage); //создаём персонажа
+characterDmitry.generatePlayer();
 
 /*функция, которая прячет кнопку*/
 const hideStartButton = () => {     
@@ -37,39 +36,3 @@ startButton.addEventListener("click", () => {
     plusPoints(0);
     characterDmitry.setJumpAbility();
 })
-
-/* 
-const setEventListeners = () => {
-    window.addEventListener("keydown", (evt)=>{
-        if (evt.key === "ArrowUp"){
-            characterDmitry.classList.add("game-zone__character_on-jump");
-        }
-    });
-    
-    characterDmitry.addEventListener("animationend", ()=>{
-        characterDmitry.classList.remove("game-zone__character_on-jump");
-    });
-} 
-*/
-
-
-
-
-
-
-
-
-
-
-/*
-window.addEventListener("keydown", (evt) => {
-    if (evt.key == "ArrowUp") {
-        character.style.bottom = "80px";
-    }
-})
-
-window.addEventListener("keyup", (evt) => {
-    if (evt.key == "ArrowUp") {
-        character.style.bottom = "40px";
-    }
-})*/

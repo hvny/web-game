@@ -1,7 +1,11 @@
 import Character from "./Character.js";
 
 export default class Enemy extends Character{
-    constructor( ){
+    constructor(enemySelector, appearance ){
+        super(enemySelector, appearance);
+    }
 
+    generateEnemy(){
+        super.generateCharacter();
     }
 }
