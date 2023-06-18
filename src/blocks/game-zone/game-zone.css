@@ -1,0 +1,8 @@
+.game-zone {
+    width: 60%;
+    padding: 0;
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}

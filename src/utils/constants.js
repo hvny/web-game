@@ -1,4 +1,5 @@
-export const templateCharacterSelector = "#character";
+export const templatePlayerSelector = "player";
+export const templateEnemeySelector = "enemy";
 
 export const page = document.querySelector(".page");
 export const gameZone = page.querySelector(".game-zone__main");

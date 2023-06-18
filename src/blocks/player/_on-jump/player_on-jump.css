@@ -1,0 +1,17 @@
+@keyframes jump {
+    from{
+        bottom: 42px;
+    }
+
+    50%{
+        bottom: 220px;
+    }
+
+    to{
+        bottom: 42px;
+    }
+}
+
+.player_on-jump{
+    animation: jump .4s 1 ease-out;
+}

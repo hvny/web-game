@@ -1,0 +1,17 @@
+.game-zone__button {
+    width: 70px;
+    height: 30px;
+    display: block;
+    border: none;
+    background-color: rgba(0, 0, 0, .5);
+    margin: 0 auto 0 auto;
+    padding: 0;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: opacity .2s ease;
+}
+
+.game-zone__button:hover {
+    opacity: .9;
+}

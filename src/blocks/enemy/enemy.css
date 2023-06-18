@@ -1,0 +1,11 @@
+.enemy{
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    background-image: url("./images/max.jpg");
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    bottom: 42px;
+    left: -1px;
+}

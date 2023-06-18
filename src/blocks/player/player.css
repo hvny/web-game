@@ -1,0 +1,10 @@
+.player {
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    bottom: 42px;
+    left: 20px;
+}

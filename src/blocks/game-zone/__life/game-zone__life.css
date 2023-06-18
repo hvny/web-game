@@ -1,0 +1,9 @@
+.game-zone__life {
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+}

@@ -1,0 +1,10 @@
+.game-zone__main {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    border-radius: 40px;
+    background-color: #A6B6A9;
+    margin: 0 0 10px 0;
+}

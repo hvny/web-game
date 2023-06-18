@@ -8,12 +8,12 @@ export default class Player extends Character{
     setJumpAbility(){
         window.addEventListener("keydown", (evt)=>{
             if (evt.key === "ArrowUp"){
-                this._characterElement.classList.add("game-zone__character_on-jump");
+                this._characterElement.classList.add("player_on-jump");
             }
         });
         
         this._characterElement.addEventListener("animationend", ()=>{
-            this._characterElement.classList.remove("game-zone__character_on-jump");
+            this._characterElement.classList.remove("player_on-jump");
         });
     }
 

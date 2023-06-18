@@ -8,8 +8,8 @@ export default class Character{
 
     _getCharacterElement(){
         return document
-        .querySelector(this._characterSelector)
-        .content.querySelector(".character")
+        .querySelector(`#${this._characterSelector}`)
+        .content.querySelector(`.${this._characterSelector}`)
         .cloneNode(true);
     }
 

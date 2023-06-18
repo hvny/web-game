@@ -2,15 +2,16 @@ import Player from "../components/Player.js";
 import Enemy from "../components/Enemy.js";
 
 import {
+    templatePlayerSelector,
+    templateEnemeySelector,
     startButton,
     points,
-    characterImage,
-    templateCharacterSelector
+    characterImage
 } from "../utils/constants.js"
 
 let isGame = false;
 
-const characterDmitry = new Player(templateCharacterSelector, characterImage); //создаём персонажа
+const characterDmitry = new Player(templatePlayerSelector, characterImage); //создаём персонажа
 characterDmitry.generatePlayer();
 
 /*функция, которая прячет кнопку*/

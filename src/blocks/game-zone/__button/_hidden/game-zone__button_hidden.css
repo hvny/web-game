@@ -1,0 +1,13 @@
+@keyframes hideButton {
+    from {
+        margin-top: 0;
+    }
+    to {
+        margin-top: -40px;
+        opacity: 0;
+    }
+}
+
+.game-zone__button_hidden {
+    animation: hideButton .7s forwards;
+}

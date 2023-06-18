@@ -1,0 +1,7 @@
+.game-zone__bottom-line {
+    width: 100%;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    border-bottom: 3px solid #ffffff;
+}
