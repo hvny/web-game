@@ -16,6 +16,6 @@ export default class Character{
     generateCharacter(){
         this._characterElement = this._getCharacterElement();
         this._characterElement.style.backgroundImage = `url(${this._appearance})`;
-        this._container.prepend(this._characterElement);
+        this._container.append(this._characterElement);
     }
 }   

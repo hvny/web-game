@@ -1,6 +1,7 @@
 @font-face {
     font-family: "Pixel Times Bold";
-    src: url("./Pixel-Times-Bold.woff") format("woff"), url("./Pixel-Times-Bold.woff2") format("woff2");
+    src: url("./Pixel-Times-Bold.woff") format("woff"), 
+         url("./Pixel-Times-Bold.woff2") format("woff2");
     font-weight: bold;
     font-style: normal;
     font-display: swap;

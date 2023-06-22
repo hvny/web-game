@@ -6,13 +6,16 @@ import {
     templateEnemeySelector,
     startButton,
     points,
-    characterImage
+    playerImage,
+    enemyImage
 } from "../utils/constants.js"
 
 let isGame = false;
 
-const characterDmitry = new Player(templatePlayerSelector, characterImage); //создаём персонажа
+const characterDmitry = new Player(templatePlayerSelector, playerImage); //создаём персонажа
 characterDmitry.generatePlayer();
+
+
 
 /*функция, которая прячет кнопку*/
 const hideStartButton = () => {     
@@ -31,9 +34,19 @@ const plusPoints = (counter) => {
     }, 200)
 }
 
+const spawnEnemies = () => {
+    const enemiesQuantity = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    for (let i = 0; i < enemiesQuantity; i++){
+        let enemy = new Enemy(templateEnemeySelector, enemyImage);
+        enemy.generateEnemy();
+    }
+    console.log("count: ",  Enemy.count);
+}
 startButton.addEventListener("click", () => {
     isGame = true;
+    spawnEnemies();
     hideStartButton();
     plusPoints(0);
     characterDmitry.setJumpAbility();
 })
+
