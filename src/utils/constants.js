@@ -9,4 +9,3 @@ export const points = page.querySelector(".game-zone__points");
 export const playerImage = "../src/images/dmitry.jpg";
 export const enemyImage = "../src/images/max.jpg";
 export const music = new Audio("../src/audio/music.mp3");
-console.log(music);
