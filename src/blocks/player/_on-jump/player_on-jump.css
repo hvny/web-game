@@ -5,12 +5,9 @@
 
 
     50%{
-        transform: translateY(-100px);
+        transform: translateY(-150px);
     }
 
-    75%{
-        transform: translateY(-70px); 
-    }
 
     to{
         transform: translateY(0);
@@ -18,5 +15,5 @@
 }
 
 .player_on-jump{
-    animation: jump .5s 1 ease;
+    animation: jump 1s 1 ease;
 }

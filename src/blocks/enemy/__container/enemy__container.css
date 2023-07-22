@@ -1,0 +1,17 @@
+@keyframes move {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100vw);
+    }
+}
+
+.enemy__container {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 42px;
+    right: -51px;
+    animation: move 3.5s 1 linear;
+}

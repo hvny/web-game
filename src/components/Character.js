@@ -1,8 +1,6 @@
-import { gameZone } from "../utils/constants.js";
 export default class Character{
     constructor(characterSelector, appearance){
         this._characterSelector = characterSelector;
-        this._container = gameZone;
         this._appearance = appearance;
     }
 
@@ -13,9 +11,9 @@ export default class Character{
         .cloneNode(true);
     }
 
-    generateCharacter(){
+    generateCharacter(container){
         this._characterElement = this._getCharacterElement();
         this._characterElement.style.backgroundImage = `url(${this._appearance})`;
-        this._container.append(this._characterElement);
+        container.append(this._characterElement);
     }
 }   

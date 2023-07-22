@@ -26,3 +26,4 @@
 
 /*enemy*/
 @import url("../blocks/enemy/enemy.css");
+@import url("../blocks/enemy/__container/enemy__container.css");
