@@ -13,6 +13,7 @@ import {
     music
 } from "../utils/constants.js"
 
+import { removeAllChilds } from "../utils/utils.js";
 
 let isGame = false;
 let lifes = 4;
@@ -27,6 +28,8 @@ const hideStartButton = () => {
     startButton.classList.add("game-zone__button_hidden");
 };
 
+
+
 /*функция, которая плюсует баллы*/
 const plusPoints = () => {
     const plus = setInterval(() => {
@@ -39,23 +42,14 @@ const plusPoints = () => {
 };
 
 const spawnGroupOfEnemies = () => {
+    removeAllChilds(enemyContainer);
     const enemiesQuantity = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 
     for (let i = 0; i < enemiesQuantity; i++){
         let enemy = new Enemy(templateEnemySelector, enemyImage);
         enemy.generateEnemy(enemyContainer);
     }
-
-    enemyContainer.addEventListener("animationend", ()=>{ /*когда враги уходят за пределы видимой зоны, они удаляются*/
-        
-    })
-    
-    
-    
-
-
 };
-
 const checkAlive = (player, enemy) => {
     let playerBottom = parseInt(getComputedStyle(player).bottom);
     let enemyLeft = parseInt(getComputedStyle(enemy).left);
@@ -68,22 +62,20 @@ const checkAlive = (player, enemy) => {
 };
 
 const spawnEnemies = () => {
-    /*
     const spawn = setInterval(() => {
         spawnGroupOfEnemies();
         
         if (!isGame) {
             clearInterval(spawn)
         }
-    }, 1200);*/
-
-    spawnGroupOfEnemies();
+    }, 3000);
 };
 
 startButton.addEventListener("click", () => {
     isGame = true;
     music.play();
     hideStartButton();
+    spawnGroupOfEnemies();
     spawnEnemies();
     plusPoints();
     characterDmitry.setJumpAbility();
