@@ -3,11 +3,17 @@
         transform: translateY(0);
     }
 
+    30%{
+        transform: translateY(-130px)
+    }
 
     50%{
         transform: translateY(-150px);
-    }
+    }   
 
+    70%{
+        transform: translateY(-130px)
+    }
 
     to{
         transform: translateY(0);
@@ -15,5 +21,5 @@
 }
 
 .player_on-jump{
-    animation: jump 1s 1 ease;
+    animation: jump .6s 1   ;
 }

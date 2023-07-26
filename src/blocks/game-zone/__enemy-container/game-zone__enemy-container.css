@@ -7,11 +7,11 @@
     }
 }
 
-.enemy__container {
+.game-zone__enemy-container {
     display: flex;
     flex-direction: row;
     position: absolute;
     bottom: 42px;
-    right: -51px;
-    animation: move 3.5s 1 linear;
+    right: -170px;
+    animation: move 2.7s infinite linear;
 }

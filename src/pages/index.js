@@ -4,14 +4,15 @@ import Enemy from "../components/Enemy.js";
 import {
     templatePlayerSelector,
     templateEnemySelector,
-    templateContainerSelector,
     gameZone,
     startButton,
+    enemyContainer,
     points,
     playerImage,
     enemyImage,
     music
 } from "../utils/constants.js"
+
 
 let isGame = false;
 let lifes = 4;
@@ -37,29 +38,21 @@ const plusPoints = () => {
     }, 200)
 };
 
-const createEnemyContainer = (container) => {
-    return document
-    .querySelector(`#${container}`)
-    .content.querySelector(`.${container}`)
-    .cloneNode(true);
-};
-
-/*спавн одной группы врагов*/
 const spawnGroupOfEnemies = () => {
     const enemiesQuantity = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    const enemyContainer = createEnemyContainer(templateContainerSelector);
 
-    enemyContainer.addEventListener("animationend", ()=>{ /*когда враги уходят за пределы видимой зоны, они удаляются*/
-        gameZone.removeChild(enemyContainer);
-    })
-    gameZone.append(enemyContainer);
-    
     for (let i = 0; i < enemiesQuantity; i++){
         let enemy = new Enemy(templateEnemySelector, enemyImage);
         enemy.generateEnemy(enemyContainer);
     }
 
-    return { enemyContainer };
+    enemyContainer.addEventListener("animationend", ()=>{ /*когда враги уходят за пределы видимой зоны, они удаляются*/
+        
+    })
+    
+    
+    
+
 
 };
 
@@ -75,17 +68,16 @@ const checkAlive = (player, enemy) => {
 };
 
 const spawnEnemies = () => {
+    /*
     const spawn = setInterval(() => {
         spawnGroupOfEnemies();
-        /*
-        setInterval(() => {
-            checkAlive(playerElem, spawnGroupOfEnemies().enemyContainer);
-        }, 10);*/
         
         if (!isGame) {
             clearInterval(spawn)
         }
-    }, 1200);
+    }, 1200);*/
+
+    spawnGroupOfEnemies();
 };
 
 startButton.addEventListener("click", () => {
