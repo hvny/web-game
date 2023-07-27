@@ -13,7 +13,6 @@
 @import url("../blocks/game-zone/__main/game-zone__main.css");
 @import url("../blocks/game-zone/__button/game-zone__button.css");
 @import url("../blocks/game-zone/__button/_hidden/game-zone__button_hidden.css");
-@import url("../blocks/game-zone/__enemy-container/game-zone__enemy-container.css");
 @import url("../blocks/game-zone/__bottom-line/game-zone__bottom-line.css");
 @import url("../blocks/game-zone/__points/game-zone__points.css");
 @import url("../blocks/game-zone/__lifes/game-zone__lifes.css");
@@ -27,3 +26,4 @@
 
 /*enemy*/
 @import url("../blocks/enemy/enemy.css");
+@import url("../blocks/enemy/__container/enemy__container.css");

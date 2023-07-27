@@ -1,22 +1,22 @@
 @keyframes jump {
     from{
-        transform: translateY(0);
+        bottom: 42px;
     }
 
     30%{
-        transform: translateY(-130px)
+        bottom: 172px;
     }
 
     50%{
-        transform: translateY(-150px);
+        bottom: 192px;
     }   
 
     70%{
-        transform: translateY(-130px)
+        bottom: 172px;
     }
 
     to{
-        transform: translateY(0);
+        bottom: 42px;
     }
 }
 

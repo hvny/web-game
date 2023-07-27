@@ -6,15 +6,12 @@ import {
     templateEnemySelector,
     templateContainerSelector,
     startButton,
-    enemyContainer,
     points,
     playerImage,
     enemyImage,
     gameZone,
     music
 } from "../utils/constants.js"
-
-import { removeAllChilds } from "../utils/utils.js";
 
 let isGame = false;
 let lifes = 4;
@@ -24,13 +21,18 @@ characterDmitry.generatePlayer();
 
 const playerElem = gameZone.querySelector(".player");
 
-const playerRect = playerElem.getBoundingClientRect();
 
 /*функция, которая прячет кнопку*/
 const hideStartButton = () => {     
     startButton.classList.add("game-zone__button_hidden");
 };
 
+const createEnemyContainer = (container) => {
+    return document
+    .querySelector(`#${container}`)
+    .content.querySelector(`.${container}`)
+    .cloneNode(true);
+};
 
 
 /*функция, которая плюсует баллы*/
@@ -44,32 +46,51 @@ const plusPoints = () => {
     }, 200)
 };
 
+
+/*проверяем, задел ли игрок группу врагов */
+const checkLives = (player, enemies) =>{
+    console.log("checked!");
+    const enemyElem = enemies;
+    const check = setInterval(()=>{             //каждые 150мс чекаем положение игрока и группы врагов 
+        const enemyLeft = parseInt(getComputedStyle(enemyElem).getPropertyValue("left"));
+        const playerBottom = parseInt(getComputedStyle(player).getPropertyValue("bottom"));
+
+        if (playerBottom <= 92 && enemyLeft <= 90){ //если игрок задел врага, то вычитаем одну жизнь,
+            lifes--                                 //и сбрасываем интервал, чтобы не происходило ;         
+            clearInterval(check);                   //многократное вычитаниие сердец, ведь функция выполняется каждые 150мс,
+            console.log(lifes);
+        }                                           //и это может происходить (многократное вычитание)
+    }, 20)
+}
+
+
+/*спавн одной группы врагов; в группе от 1 до 3 enemy*/
 const spawnGroupOfEnemies = () => {
-    removeAllChilds(enemyContainer);
+    const enemyContainer = createEnemyContainer(templateContainerSelector);
     const enemiesQuantity = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 
+    enemyContainer.addEventListener("animationend", ()=>{ /*когда враги уходят за пределы видимой зоны, они удаляются*/
+        gameZone.removeChild(enemyContainer);
+    })
+
+    gameZone.append(enemyContainer);
     for (let i = 0; i < enemiesQuantity; i++){
         let enemy = new Enemy(templateEnemySelector, enemyImage);
         enemy.generateEnemy(enemyContainer);
     }
 
+    return { enemyContainer };
 };
 
-/*
-const minusLife = (playerRect, enemiesRect) => {
-    console.log(lifes);
-    if (enemiesRect.x <= 219 && playerRect.top < 528){
-        lifes--;
-    }
-};*/
-
+/* каждые 1900мс спавним группу врагов, и вместе с тем вызываем checkLives()*/
 const spawnEnemies = () => {
     const spawn = setInterval(() => {
         spawnGroupOfEnemies();
+        checkLives(playerElem, spawnGroupOfEnemies().enemyContainer);
         if (!isGame) {
             clearInterval(spawn)
         }
-    }, 3000);
+    }, 1900);
 };
 
 startButton.addEventListener("click", () => {

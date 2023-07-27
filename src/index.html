@@ -23,7 +23,7 @@
                 </div>
                 <p class="game-zone__points">0</p>
                 <ul class="game-zone__lifes">
-                    <li class="game-zone__life game-zone__life_type_empty"></li>
+                    <li class="game-zone__life game-zone__life_type_full"></li>
                     <li class="game-zone__life game-zone__life_type_full"></li>
                     <li class="game-zone__life game-zone__life_type_full"></li>
                     <li class="game-zone__life game-zone__life_type_full"></li>
@@ -33,13 +33,9 @@
         <script src="./pages/index.js" type="module"></script>
     </div>
 
-    <template id = "player">
-        <div class = "player"></div>
-    </template>
-
-    <template id = "enemy">
-        <div class = "enemy"></div>
-    </template>
+    <template id = "player"><div class = "player"></div></template>
+    <template id = "enemy"><div class = "enemy"></div></template>
+    <template id = "enemy__container"><div class = "enemy__container"></div></template>
 </body>
 
 </html>
