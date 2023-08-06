@@ -7,6 +7,7 @@ import {
     templateContainerSelector,
     startButton,
     points,
+    lifesContainer,
     playerImage,
     enemyImage,
     gameZone,
@@ -49,19 +50,34 @@ const plusPoints = () => {
 
 /*проверяем, задел ли игрок группу врагов */
 const checkLives = (player, enemies) =>{
-    console.log("checked!");
-    const enemyElem = enemies;
-    const check = setInterval(()=>{             //каждые 150мс чекаем положение игрока и группы врагов 
-        const enemyLeft = parseInt(getComputedStyle(enemyElem).getPropertyValue("left"));
+    setTimeout(function check(){
+        if (lifes == 0){
+            isGame == false;
+            clearTimeout(check);
+            characterDmitry.removeJumpAbility();
+            console.log("game over");
+        }
+
+        const enemyLeft = parseInt(getComputedStyle(enemies).getPropertyValue("left"));
         const playerBottom = parseInt(getComputedStyle(player).getPropertyValue("bottom"));
 
-        if (playerBottom <= 92 && enemyLeft <= 90){ //если игрок задел врага, то вычитаем одну жизнь,
-            lifes--                                 //и сбрасываем интервал, чтобы не происходило ;         
-            clearInterval(check);                   //многократное вычитаниие сердец, ведь функция выполняется каждые 150мс,
+        if (playerBottom <= 92 && enemyLeft <= 90){ //если игрок задел врага, то вычитаем одну жизнь
+            minusLife();
             console.log(lifes);
-        }                                           //и это может происходить (многократное вычитание)
-    }, 20)
-}
+            clearTimeout(check);                  
+        }   
+        setTimeout(check, 1000);
+    }, 10)
+};
+
+const minusLife = () => {
+    lifes--;
+    const life = lifesContainer.querySelector(".game-zone__life_type_full");
+    if (life){
+        life.classList.remove("game-zone__life_type_full");
+        life.classList.add("game-zone__life_type_empty");
+    }
+};
 
 
 /*спавн одной группы врагов; в группе от 1 до 3 enemy*/
@@ -82,22 +98,23 @@ const spawnGroupOfEnemies = () => {
     return { enemyContainer };
 };
 
-/* каждые 1900мс спавним группу врагов, и вместе с тем вызываем checkLives()*/
+/* каждые 2000мс спавним группу врагов, и вместе с тем вызываем checkLives()*/
 const spawnEnemies = () => {
-    const spawn = setInterval(() => {
+    setTimeout(function spawn() {
+        if (!isGame) {
+            clearTimeout(spawn)
+        }
         spawnGroupOfEnemies();
         checkLives(playerElem, spawnGroupOfEnemies().enemyContainer);
-        if (!isGame) {
-            clearInterval(spawn)
-        }
-    }, 1900);
+        setTimeout(spawn, 2000);
+    }, 2000);
+    
 };
 
 startButton.addEventListener("click", () => {
     isGame = true;
     music.play();
     hideStartButton();
-    spawnGroupOfEnemies();
     spawnEnemies();
     plusPoints();
     characterDmitry.setJumpAbility();

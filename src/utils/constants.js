@@ -6,6 +6,8 @@ export const page = document.querySelector(".page");
 export const gameZone = page.querySelector(".game-zone__main");
 export const startButton = gameZone.querySelector(".game-zone__button");
 export const points = page.querySelector(".game-zone__points");
+export const lifesContainer = page.querySelector(".game-zone__lifes"); 
+
 export const playerImage = "../src/images/dmitry.jpg";
 export const enemyImage = "../src/images/max.jpg";
 export const music = new Audio("../src/audio/music.mp3");

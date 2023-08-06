@@ -19,6 +19,11 @@ export default class Player extends Character{
         });
     }
 
+    removeJumpAbility(){
+        //window.removeEventListener("keydown");
+        //this._characterElement.removeEventListener("animationend");
+    }
+
     generatePlayer(){
         super.generateCharacter(this._container);
     }
