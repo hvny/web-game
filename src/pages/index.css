@@ -27,3 +27,9 @@
 /*enemy*/
 @import url("../blocks/enemy/enemy.css");
 @import url("../blocks/enemy/__container/enemy__container.css");
+
+/*popup*/
+@import url("../blocks/popup/popup.css");
+@import url("../blocks/popup/_visible/popup_visible.css");
+@import url("../blocks/popup/__title/popup__title.css");
+@import url("../blocks/popup/__button/popup__button.css");
