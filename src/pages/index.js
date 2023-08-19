@@ -30,11 +30,12 @@ import {
 
 import {
     setItem, 
-    updateItem,
 } from "../utils/storage.js";
 
 let isGame = false;
 let lifes = 4;
+
+//localStorage.clear();
 
 const mainCharacter = new Player(templatePlayerSelector, playerImage); //создаём персонажа
 mainCharacter.generatePlayer();
@@ -69,8 +70,7 @@ const minusLife = () => {
 const defeat = () => {
     isGame = false;
     setItem("score", points.textContent);       //добавляем рекорд в localStorage при первом поражении
-    updateItem("score", points.textContent);    //обновляем рекорд в localStorage
-    updateScore();                              //обновляем рекорд на странице
+    updateScore();                              //обновляем рекорд на странице и в localStorage
     changeCursorStyle(gameZone, isGame);        //появляется курсор
     deleteElems(templateContainerSelector);     //удаляются препятствия
     openPopup(defeatPopup);                     //открывается попап
@@ -79,20 +79,24 @@ const defeat = () => {
 
 /*проверяем, задел ли игрок группу врагов */
 const checkLives = (player, obstacles) =>{
-    if (isGame === false){
-        return;
-    }
-
     setTimeout(function check(){
+        if (isGame == false) {
+            clearTimeout(check);
+            return;
+        }
+        //console.log(obstacles.childNodes.length);
         const obstacleLeft = parseInt(getComputedStyle(obstacles).getPropertyValue("left"));
+        const obstacleWidth = parseInt(getComputedStyle(obstacles).getPropertyValue("width"));
         const playerBottom = parseInt(getComputedStyle(player).getPropertyValue("bottom"));
-
+        
         if (lifes == 0){
             clearTimeout(check);
             defeat();
             return;
+
         }
-        if (playerBottom <= 92 && obstacleLeft <= 90 && obstacleLeft >= 10){ //если игрок задел врага, то вычитаем одну жизнь
+
+        if (playerBottom <= 92 && obstacleLeft <= 90 && obstacleLeft >= -15){ //если игрок задел препятствие, то вычитаем одну жизнь
             clearTimeout(check); 
             minusLife();   
             return;              
@@ -109,7 +113,7 @@ const spawnGroupOfObstacles = () => {
     const obstacleContainer = createContainer(templateContainerSelector);
     const obstaclesQuantity = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 
-    obstacleContainer.addEventListener("animationend", ()=>{ /*когда враги уходят за пределы видимой зоны, они удаляются*/
+    obstacleContainer.addEventListener("animationend", ()=>{ /*когда препятствия уходят за пределы видимой зоны, они удаляются*/
         obstacleContainer.remove();
     })
 
@@ -121,7 +125,7 @@ const spawnGroupOfObstacles = () => {
     return { obstacleContainer };
 };
 
-/* каждые 2000мс спавним группу врагов, и вместе с тем вызываем checkLives()*/
+/* каждые 1000мс спавним группу препятствий, и вместе с тем вызываем checkLives()*/
 const spawnObstacles = () => {
     setTimeout(function spawn() {
         if (isGame === false) {
@@ -138,12 +142,11 @@ const spawnObstacles = () => {
 /*начинаем игру*/
 startButton.addEventListener("click", () => {
     isGame = true;
-    //music.play();
     hideButton(startButton);
-    spawnObstacles();
-    plusPoints();
     mainCharacter.setJumpAbility();
     changeCursorStyle(gameZone, isGame);
+    spawnObstacles();
+    plusPoints();
 });
 
 restartButton.addEventListener("click", () => {

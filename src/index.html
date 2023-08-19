@@ -13,29 +13,28 @@
         <header class="header">
             <h1 class="header__title">Rrrun</h1>
         </header>
-        
-        <section class="game-zone">
-            <div class="game-zone__main">
-                <button class="game-zone__button">GO!</button>
-                <div class = "game-zone__enemy-container"></div>
-                <div class="game-zone__bottom-line"></div>
-            </div>
-            <p class="game-zone__points">0</p>
-            <ul class="game-zone__lifes">
-                <li class="game-zone__life game-zone__life_type_full"></li>
-                <li class="game-zone__life game-zone__life_type_full"></li>
-                <li class="game-zone__life game-zone__life_type_full"></li>
-                <li class="game-zone__life game-zone__life_type_full"></li>
-            </ul>
-        </section>
-        <script src="./pages/index.js" type="module"></script>
+        <main>
+            <section class="game-zone">
+                <div class="game-zone__main">
+                    <button class="game-zone__button">GO!</button>
+                    <div class = "game-zone__enemy-container"></div>
+                    <div class="game-zone__bottom-line"></div>
+                </div>
+                <p class="game-zone__points">0</p>
+                <ul class="game-zone__lifes">
+                    <li class="game-zone__life game-zone__life_type_full"></li>
+                    <li class="game-zone__life game-zone__life_type_full"></li>
+                    <li class="game-zone__life game-zone__life_type_full"></li>
+                    <li class="game-zone__life game-zone__life_type_full"></li>
+                </ul>
+            </section>
+            <script src="./pages/index.js" type="module"></script>
+        </main>
     </div>
-
     <div class = "popup popup_type_highscore">
         <h2 class = "popup__title popup__text">Highscore</h2>
         <p class = "popup__text popup__points">0</p>
     </div>
-
     <div class = "popup popup_type_defeat">
         <h2 class = "popup__title popup__text">You loose &#58;&#40;</h2>
         <button class = "popup__button"></button>

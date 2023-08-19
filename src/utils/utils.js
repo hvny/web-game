@@ -1,5 +1,6 @@
 import {
     checkStorage,
+    updateItem,
 } from "./storage.js";
 
 import {
@@ -51,5 +52,6 @@ export const showScore = (item, popup, score) => {
 export const updateScore = () => {
     if (parseInt(scorePoints.textContent) < parseInt(points.textContent)){
         scorePoints.textContent = points.textContent;
+        updateItem("score", points.textContent);
     }
 }
