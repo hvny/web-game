@@ -9,6 +9,8 @@ import {
     points,
     lifesContainer,
     defeatPopup,
+    scorePopup,
+    scorePoints,
     restartButton,
     playerImage,
     enemyImage,
@@ -21,7 +23,15 @@ import {
     createContainer,
     deleteElems,
     openPopup,
+    changeCursorStyle,
+    showScore,
+    updateScore,
 } from "../utils/utils.js";
+
+import {
+    setItem, 
+    updateItem,
+} from "../utils/storage.js";
 
 let isGame = false;
 let lifes = 4;
@@ -31,6 +41,7 @@ mainCharacter.generatePlayer();
 
 const playerElem = gameZone.querySelector(".player");
 
+showScore("score", scorePopup, scorePoints);  //если пользователь уже играл, то покажется попап с рекордом
 
 /*функция, которая плюсует баллы*/
 const plusPoints = () => {
@@ -44,6 +55,28 @@ const plusPoints = () => {
     }, 200)
 };
 
+/*вычитаем жизнь*/
+const minusLife = () => {
+    lifes--;
+    const life = lifesContainer.querySelector(".game-zone__life_type_full");
+    if (life){
+        life.classList.remove("game-zone__life_type_full");
+        life.classList.add("game-zone__life_type_empty");
+    }
+};
+
+/*функция, вызываемая при поражении */
+const defeat = () => {
+    isGame = false;
+    setItem("score", points.textContent);       //добавляем рекорд в localStorage при первом поражении
+    updateItem("score", points.textContent);    //обновляем рекорд в localStorage
+    updateScore();                              //обновляем рекорд на странице
+    changeCursorStyle(gameZone, isGame);        //появляется курсор
+    deleteElems(templateContainerSelector);     //удаляются препятствия
+    openPopup(defeatPopup);                     //открывается попап
+    //mainCharacter.removeJumpAbility();
+}
+
 /*проверяем, задел ли игрок группу врагов */
 const checkLives = (player, obstacles) =>{
     if (isGame === false){
@@ -55,38 +88,22 @@ const checkLives = (player, obstacles) =>{
         const playerBottom = parseInt(getComputedStyle(player).getPropertyValue("bottom"));
 
         if (lifes == 0){
-            isGame = false;
-            deleteElems(templateContainerSelector);
             clearTimeout(check);
-            openPopup(defeatPopup);
+            defeat();
             return;
         }
-        console.log(obstacleLeft);
-        if (playerBottom <= 92 && obstacleLeft <= 90 && obstacleLeft >= 20){ //если игрок задел врага, то вычитаем одну жизнь
-            minusLife();
-            console.log(lifes);
-            clearTimeout(check);    
+        if (playerBottom <= 92 && obstacleLeft <= 90 && obstacleLeft >= 10){ //если игрок задел врага, то вычитаем одну жизнь
+            clearTimeout(check); 
+            minusLife();   
             return;              
         }
-        
         setTimeout(check, 100);
     }, 100)
-};
-
-/*вычитаем жизнь*/
-const minusLife = () => {
-    lifes--;
-    const life = lifesContainer.querySelector(".game-zone__life_type_full");
-    if (life){
-        life.classList.remove("game-zone__life_type_full");
-        life.classList.add("game-zone__life_type_empty");
-    }
 };
 
 /*спавн одной группы препятствий; в группе от 1 до 3 enemy*/
 const spawnGroupOfObstacles = () => {
     if (isGame === false){
-        console.log("isGame:", isGame);
         return;
     }
     const obstacleContainer = createContainer(templateContainerSelector);
@@ -101,7 +118,6 @@ const spawnGroupOfObstacles = () => {
         let obstacle = new Obstacle(templateObstacleSelector, enemyImage);
         obstacle.generateEnemy(obstacleContainer);
     }
-
     return { obstacleContainer };
 };
 
@@ -114,11 +130,12 @@ const spawnObstacles = () => {
         }
         spawnGroupOfObstacles();
         checkLives(playerElem, spawnGroupOfObstacles().obstacleContainer);
-        setTimeout(spawn, 2000);
-    }, 2000);
+        setTimeout(spawn, 1000);
+    }, 1000);
     
 };
 
+/*начинаем игру*/
 startButton.addEventListener("click", () => {
     isGame = true;
     //music.play();
@@ -126,6 +143,7 @@ startButton.addEventListener("click", () => {
     spawnObstacles();
     plusPoints();
     mainCharacter.setJumpAbility();
+    changeCursorStyle(gameZone, isGame);
 });
 
 restartButton.addEventListener("click", () => {

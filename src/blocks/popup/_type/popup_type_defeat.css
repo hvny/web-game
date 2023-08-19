@@ -1,0 +1,5 @@
+.popup_type_defeat {
+    left: calc(100vw / 2 - 100px);
+    top: calc(100vh / 2 - 50px);
+}
+

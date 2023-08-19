@@ -1,3 +1,12 @@
+import {
+    checkStorage,
+} from "./storage.js";
+
+import {
+    points,
+    scorePoints,
+} from "./constants.js";
+
 /*функция, которая прячет кнопку*/
 export const hideButton = (button) => {     
     button.classList.add("game-zone__button_hidden");
@@ -19,7 +28,28 @@ export const deleteElems = (selector) => {
 }
 
 export const openPopup = (popup) => {
-    if (!popup.classList.contains("popup_visible")) {
-        popup.classList.add("popup_visible");
+    if (!popup.classList.contains("popup_opened")) {
+        popup.classList.add("popup_opened");
+    }
+}
+
+export const changeCursorStyle = (container, isGame) => {
+    if (isGame) {
+        container.style.cursor = "none";
+    } else {
+        container.style.cursor = "default";
+    }
+}
+
+export const showScore = (item, popup, score) => {
+    if (checkStorage(item)) {
+        score.textContent = localStorage.getItem(item);
+        openPopup(popup);
+    }
+}
+
+export const updateScore = () => {
+    if (parseInt(scorePoints.textContent) < parseInt(points.textContent)){
+        scorePoints.textContent = points.textContent;
     }
 }
