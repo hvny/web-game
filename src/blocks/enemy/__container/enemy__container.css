@@ -14,5 +14,4 @@
     bottom: 42px;
     left: calc(100% + 150px);
     animation: move 1.9s 1 linear;
-    border: 1px solid red;
 }

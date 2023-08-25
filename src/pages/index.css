@@ -20,6 +20,10 @@
 @import url("../blocks/game-zone/__life/_type/game-zone__life_type_empty.css");
 @import url("../blocks/game-zone/__life/_type/game-zone__life_type_full.css");
 
+/*footer*/
+@import url("../blocks/footer/footer.css");
+@import url("../blocks/footer/__title/footer__title.css");
+
 /*player*/
 @import url("../blocks/player/player.css");
 @import url("../blocks/player/_on-jump/player_on-jump.css");

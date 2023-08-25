@@ -1,3 +1,16 @@
+@keyframes heart-jump {
+    from {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 .game-zone__life_type_empty {
     background-image: url("../../../../images/EmptyHeart.svg");
+    animation: heart-jump .5s 1 ease;
 }

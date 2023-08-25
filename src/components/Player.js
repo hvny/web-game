@@ -22,7 +22,7 @@ export default class Player extends Character{
     }
     
     removeJumpAbility(){
-        window.removeEventListener("keydown", this._jump.bind(this));
+        window.removeEventListener("keydown", this._jump);
     }
 
     generatePlayer(){

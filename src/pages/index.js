@@ -84,19 +84,16 @@ const checkLives = (player, obstacles) =>{
             clearTimeout(check);
             return;
         }
-        //console.log(obstacles.childNodes.length);
         const obstacleLeft = parseInt(getComputedStyle(obstacles).getPropertyValue("left"));
-        const obstacleWidth = parseInt(getComputedStyle(obstacles).getPropertyValue("width"));
         const playerBottom = parseInt(getComputedStyle(player).getPropertyValue("bottom"));
-        
+
         if (lifes == 0){
             clearTimeout(check);
             defeat();
             return;
-
         }
 
-        if (playerBottom <= 92 && obstacleLeft <= 90 && obstacleLeft >= -15){ //если игрок задел препятствие, то вычитаем одну жизнь
+        if (playerBottom <= 92 && obstacleLeft <= 90 && obstacleLeft >= -20){ //если игрок задел препятствие, то вычитаем одну жизнь
             clearTimeout(check); 
             minusLife();   
             return;              
@@ -135,16 +132,15 @@ const spawnObstacles = () => {
         spawnGroupOfObstacles();
         checkLives(playerElem, spawnGroupOfObstacles().obstacleContainer);
         setTimeout(spawn, 1000);
-    }, 1000);
-    
+    }, 1000);  
 };
 
 /*начинаем игру*/
 startButton.addEventListener("click", () => {
     isGame = true;
+    changeCursorStyle(gameZone, isGame);
     hideButton(startButton);
     mainCharacter.setJumpAbility();
-    changeCursorStyle(gameZone, isGame);
     spawnObstacles();
     plusPoints();
 });
