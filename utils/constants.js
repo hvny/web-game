@@ -12,6 +12,6 @@ export const scorePopup = document.querySelector(".popup_type_highscore");
 export const scorePoints = scorePopup.querySelector(".popup__points");
 export const restartButton = defeatPopup.querySelector(".popup__button");
 
-export const playerImage = "../../images/dino.png";
-export const enemyImage = "../../images/lava.png";
-export const music = new Audio("../../audio/music.mp3");
+export const playerImage = "../images/dino.png";
+export const enemyImage = "../images/lava.png";
+export const music = new Audio("../audio/music.mp3");

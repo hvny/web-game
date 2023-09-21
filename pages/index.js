@@ -15,7 +15,6 @@ import {
     playerImage,
     enemyImage,
     gameZone,
-    music,
 } from "../utils/constants.js";
 
 import {
