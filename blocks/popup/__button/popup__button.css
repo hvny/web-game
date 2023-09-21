@@ -3,7 +3,7 @@
     height: 50px;
     border: none;
     background-color: transparent;
-    background-image: url("../../../images/restart.png");
+    background-image: url("../../../assets/images/restart.png");
     background-position: center;
     background-size: cover;
     cursor: pointer;

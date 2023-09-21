@@ -11,6 +11,6 @@
 }
 
 .game-zone__life_type_empty {
-    background-image: url("../../../../images/EmptyHeart.svg");
+    background-image: url("../../../../assets/images/EmptyHeart.svg");
     animation: heart-jump .5s 1 ease;
 }
