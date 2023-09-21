@@ -17,4 +17,4 @@
 - Персонаж — первый попавшийся на просторах интернета 2D динозаврик.
 - Препятствия — блоки лавы из майнкрафта.
 
-##[Ссылка на Github Pages](https://hvny.github.io/web-game/)
+## [Ссылка на Github Pages](https://hvny.github.io/web-game/)
