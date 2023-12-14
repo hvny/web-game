@@ -29,17 +29,11 @@ export const deleteElems = (selector) => {
 }
 
 export const openPopup = (popup) => {
-    if (!popup.classList.contains("popup_opened")) {
-        popup.classList.add("popup_opened");
-    }
+    !popup.classList.contains("popup_opened") ? popup.classList.add("popup_opened") : " ";
 }
 
 export const changeCursorStyle = (container, isGame) => {
-    if (isGame) {
-        container.style.cursor = "none";
-    } else {
-        container.style.cursor = "default";
-    }
+    isGame ? container.style.cursor = "none" : container.style.cursor = "default";
 }
 
 export const showScore = (item, popup, score) => {

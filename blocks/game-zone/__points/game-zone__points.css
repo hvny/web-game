@@ -1,4 +1,7 @@
 .game-zone__points {
+    width: 200px;
+    height: min-content;
+    display: block;
     color: white;
     margin: 0 0 0 40px;
     font-size: 30px;
