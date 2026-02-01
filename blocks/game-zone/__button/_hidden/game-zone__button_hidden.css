@@ -4,6 +4,7 @@
     }
     to {
         transform: translateY(-40px);
+        display: none;
         opacity: 0;
     }
 }

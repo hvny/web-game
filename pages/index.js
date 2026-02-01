@@ -73,7 +73,6 @@ const defeat = () => {
     changeCursorStyle(gameZone, isGame);        //появляется курсор
     deleteElems(templateContainerSelector);     //удаляются препятствия
     openPopup(defeatPopup);                     //открывается попап
-    //mainCharacter.removeJumpAbility();
 }
 
 /*проверяем, задел ли игрок группу врагов */
@@ -136,9 +135,9 @@ const spawnObstacles = () => {
 
 /*начинаем игру*/
 startButton.addEventListener("click", () => {
+    hideButton(startButton);
     isGame = true;
     changeCursorStyle(gameZone, isGame);
-    hideButton(startButton);
     mainCharacter.setJumpAbility();
     spawnObstacles();
     plusPoints();

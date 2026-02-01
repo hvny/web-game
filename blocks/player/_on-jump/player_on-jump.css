@@ -1,6 +1,7 @@
 @keyframes jump {
     from{
         bottom: 42px;
+        transform: rotate(0deg);
     }
 
     30%{
@@ -16,10 +17,12 @@
     }
 
     to{
+        transform: rotate(360deg);
         bottom: 42px;
     }
 }
 
 .player_on-jump{
-    animation: jump .6s 1   ;
+    animation: jump .6s 1;
+    transition: all .3s ease;
 }

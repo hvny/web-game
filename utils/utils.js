@@ -10,6 +10,7 @@ import {
 
 /*функция, которая прячет кнопку*/
 export const hideButton = (button) => {     
+    button.blur();
     button.classList.add("game-zone__button_hidden");
 };
 
@@ -49,3 +50,4 @@ export const updateScore = () => {
         updateItem("score", points.textContent);
     }
 }
+
